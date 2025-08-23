@@ -1,5 +1,8 @@
 {config, lib, pkgs, ... }:
 
+let
+	secrets = import ./secrets.nix;
+in
 {
   imports =
     [
@@ -17,7 +20,7 @@
   networking.wireless.enable = true;
   networking.wireless.networks = {
     vanDelft = {
-      psk = "R121078T140979";
+      psk = secrets.vanDelftWifiPassword;
     };
   };
   
@@ -36,7 +39,6 @@
 
   services.openssh.enable = true;
 
-  boot.kernelParams = [ "consoleblank=60" ];
   services.getty.autologinUser = "smvd";
 
   smvd-desktop.enable = true;
