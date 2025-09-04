@@ -38,6 +38,7 @@ with lib;
 			pkgs.rofi-wayland
 			pkgs.firefox
 			pkgs.brightnessctl
+			pkgs.wpa_supplicant_gui
 		];
 
 		fonts = {
@@ -61,7 +62,7 @@ with lib;
 			exec eww -c /etc/eww/ open bar
 			exec /bin/sh /etc/eww/workspaces.sh
 			
-			output "*" bg ~/.config/wallpaper.jpg fill
+			output "*" bg ~/.config/wallpaper.svg fill
 			
 			font Spleen 6x12 Regular 12
 			title_align center

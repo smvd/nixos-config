@@ -9,6 +9,9 @@ in
 		./hardware-configuration.nix
 		./modules/smvd-desktop.nix
 		./modules/smvd-shell.nix
+		./modules/smvd-programs.nix
+		./modules/smvd-devel.nix
+		./modules/smvd-zephyr.nix
 	];
 
 	boot.loader.systemd-boot.enable = true;
@@ -18,9 +21,20 @@ in
 	networking.hostName = "nixos-asus";
 
 	networking.wireless.enable = true;
+	networking.wireless.userControlled.enable = true;
 	networking.wireless.networks = {
 		vanDelft = {
 			psk = secrets.vanDelftWifiPassword;
+		};
+		hotspot = {
+			psk = secrets.hotspotWifiPassword;
+		};
+		eduroam = {
+			auth = ''key_mgmt=WPA-EAP
+			eap=PEAP
+			identity="sm.vandelft@student.avans.nl"	
+			password="Sem16112006!"
+			phase2="auth=MSCHAPV2"'';
 		};
 	};
 
@@ -42,6 +56,8 @@ in
 	smvd-desktop.enable = true;
 	smvd-shell.enable = true;
 	smvd-programs.enable = true;
+	smvd-devel.enable = true;
+	smvd-zepyhr.enable = true;
 
 	# Open ports in the firewall.
 	# networking.firewall.allowedTCPPorts = [ ... ];
