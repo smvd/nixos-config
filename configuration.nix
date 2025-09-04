@@ -32,8 +32,8 @@ in
 		eduroam = {
 			auth = ''key_mgmt=WPA-EAP
 			eap=PEAP
-			identity="sm.vandelft@student.avans.nl"	
-			password="Sem16112006!"
+			identity="${secrets.eduroamEmail}"	
+			password="${secrets.eduroamPassword}"
 			phase2="auth=MSCHAPV2"'';
 		};
 	};
